@@ -196,6 +196,9 @@ module.exports = function (content) {
         } else {
           this.emitFile(formatUrl, res[format]);
         }
+        if (generatorConfiguration.cssFontsPath) {
+          urls[format] = (path.relative(generatorConfiguration.cssFontsPath, urls[format])).replace(/\\/g, '/');
+        }
       } else {
         urls[format] = 'data:' +
           mimeTypes[format] +
